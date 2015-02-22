@@ -1,6 +1,10 @@
 	## first we load the data into R
 	## These are the folders' names
+<<<<<<< HEAD
 	## Please note that the operating system is Windows!
+=======
+	## Please note that the operating system is Windows! (clause 1)
+>>>>>>> parent of 2f62463... Revert "The files required for the Project"
 	 wd_train<-"./getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/train/Inertial Signals"
 	 wd_test<-"./getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/test/Inertial Signals"
 
@@ -19,6 +23,7 @@
 	test_data<-read.table(subject_test.filename)
 	
 	## We want only those items with "mean()" or "std" in their names
+<<<<<<< HEAD
 	## I decided to ignore the meanFrequency that sometimes appear
 	 c1<-grep("mean()", names[,2])
 	 c2<-c(c1,grep("std", names[,2]))
@@ -29,6 +34,21 @@
 	x_train.sub<-AllTrain.df[c2]
 	x_test.sub<-AllTest.df[c2]
 
+=======
+	## I included the meanFrequency that sometimes appear (clause 2), as it is a mean
+	 c1<-grep("mean", names[,2])
+	 c2<-c(c1,grep("std", names[,2]))
+
+
+
+	## and these are only the columns that we want
+	x_train.sub<-AllTrain.df[c2]
+	x_test.sub<-AllTest.df[c2]
+
+	##This is how we merge the data	
+	##simple merge
+
+>>>>>>> parent of 2f62463... Revert "The files required for the Project"
 	## first All the trains, then all the test
 	AllTrain.df<-cbind(subject_data, y_train, x_train.sub)
 	AllTest.df<-cbind(test_data, y_test, x_test.sub)
